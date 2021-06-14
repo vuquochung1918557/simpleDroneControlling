@@ -1,0 +1,28 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Drone exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "drone",
+    "exercise",
+    "huynh",
+    "le",
+    "phong"
+  ],
+  "author": "huynh le phong",
+  "license": "ISC",
+  "dependencies": {
+    "css": "^2.2.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "images": "^3.0.1",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.0",
+    "path": "^0.12.7",
+    "sass": "^1.5.1"
+  }
+}

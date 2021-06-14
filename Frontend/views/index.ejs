@@ -1,0 +1,187 @@
+<link rel="stylesheet" href="css/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="control-panel" class="control-panel">
+<textarea id="x" class='text-area' placeholder="x">0</textarea>
+<textarea id="y" class='text-area' placeholder="y">0</textarea>
+<textarea id="f" class='text-area' placeholder="f">0</textarea>
+<button id="place">PLACE</button>
+<button id="move">MOVE</button>
+<button id="left">LEFT</button>
+<button id="right">RIGHT</button>
+<button id="functionaltest">RUN AUTOMATION FUNCTIONAL TEST</button>
+<br>
+<label>Current position (x, y, f):</label>
+<label>(</label>
+<label id="labelx">0</label>
+<label>, </label>
+<label id="labely">0</label>
+<label>, </label>
+<label id="labelf">0</label>
+<label>)</label>
+</div>
+<div>
+<div id="table-container" class ="table-container">
+</table>
+<div id="table" class="table">
+<img src="../images/camera.png" id='drone' class='drone'>
+</div>
+</div>
+<div class='previous-command-table-container'><table id='previous-command-table'>
+        <th>Command</th>
+        <th>Position</th>
+        <th>Run</th>
+        <tbody>
+            <tr>
+                <td>PLACE</td>
+                <td>0,0,0</td>
+                <td><button>Run</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class='test-panel-container'><table id='test-panel-table'>
+        <th>Test Step</th>
+        <th>Executed</th>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</div>
+<script>
+
+    $('#place').click(function () {
+        let x = $('#x').val()
+        let y = $('#y').val()
+        let f = $('#f').val()
+        sendCommandToDrone("PLACE", x, y, f)
+    });
+
+    $('#move').click(function () {
+    sendCommandToDrone("MOVE", $('#labelx').text(), $('#labely').text(), $('#labelf').text())
+    });
+
+    $('#left').click(function () {
+        sendCommandToDrone("LEFT", $('#labelx').text(), $('#labely').text(), $('#labelf').text())
+    });
+
+    $('#right').click(function () {
+        sendCommandToDrone("RIGHT", $('#labelx').text(), $('#labely').text(), $('#labelf').text())
+    });
+
+    $('#functionaltest').click(function () {
+        $('#right').click(); testCommandWriter("RIGHT");
+        let delay = 1000;
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("ABC"); $("#y").text("0"); $("#f").text("0"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("0"); $("#y").text("ABC"); $("#f").text("0"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("0"); $("#y").text("0"); $("#f").text("ABC"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("ABC"); $("#y").text("ABC"); $("#f").text("ABC"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("460"); $("#y").text("0"); $("#f").text("0"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("0"); $("#y").text("460"); $("#f").text("0"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("0"); $("#y").text("0"); $("#f").text("120"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("460"); $("#y").text("460"); $("#f").text("120"); }, delay = delay + 2000);
+        setTimeout(function() { $('#place').click(); testCommandWriter("PLACE"); $("#x").text("10"); $("#y").text("20"); $("#f").text("0"); }, delay = delay + 2000);
+        setTimeout(function() { $('#right').click(); testCommandWriter("RIGHT");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#left').click(); testCommandWriter("LEFT");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#right').click(); testCommandWriter("RIGHT");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#right').click(); testCommandWriter("RIGHT");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#right').click(); testCommandWriter("RIGHT");}, delay = delay + 2000);
+        setTimeout(function() { $('#right').click(); testCommandWriter("RIGHT");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE");}, delay = delay + 2000);
+        setTimeout(function() { $('#move').click(); testCommandWriter("MOVE"); testCommandWriter("FINISH");}, delay = delay + 2000);
+    });
+
+    $('#previous-command-table tbody').on( 'click', 'button', function () {
+        var axis = $(this).closest("tr").find('td').eq(1).text()
+        var parsed = parseAxis(axis)
+        sendCommandToDrone('PLACE', parsed[0], parsed[1], parsed[2], false)
+    });
+    
+    function testCommandWriter(action) {
+        var newCommand = "<tr><td>" + action + "</td><td>Done</tr>";  
+        $("#test-panel-table tbody:eq(1)").append(newCommand);
+    }
+
+    function parseAxis(axis) {
+        var parsed = axis.split(',');
+        return parsed
+    }
+    function sendCommandToDrone(action, currentx, currenty, currentf, isSave = true) {
+        $.getJSON("http://localhost:8080/ZenRooms/Backend/" + action + ".php?x=" + currentx +"&y=" + currenty +"&f=" + currentf, function(result){
+            droneMove(result.x,  result.y, result.f, action, isSave)
+    });
+    }
+
+    function droneMove (x, y, f, action, isSave = true) {
+        $('#labelx').text(x)
+        $('#labely').text(y)
+        if (Math.abs(f) === 360)
+            f = 0
+        $('#labelf').text(f)
+        $('#drone').css('left', x + 'px')
+        $('#drone').css('top', y + 'px')
+        $('#drone').css('transform', 'rotate(' + f + 'deg)')
+        if (isSave) {
+            var newCommand = "<tr><td>" + action + "</td><td class='position'>" + x + "," + y + "," + f + "</td><td><button class='runbutton'>Run</button></tr>";  
+            $("#previous-command-table tbody:eq(1)").append(newCommand);
+        }
+    }
+    
+</script>

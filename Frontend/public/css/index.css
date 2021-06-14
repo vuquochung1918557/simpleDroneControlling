@@ -1,0 +1,50 @@
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+.text-area{
+    width:50px;
+    height:20px;
+}
+.previous-command-table-container{
+    float: left;
+    display:inline-block;
+}
+.table-container{
+    overflow:hidden;
+    height:800px;
+    width:700px;
+    float:left;
+    display:inline-block;
+    background-color:blue;
+}
+.test-panel-container{
+    float: left;
+    display:inline-block;
+}
+.test-panel-table{
+    overflow:hidden;
+    height:800px;
+    width:700px;
+    display:inline-block;
+    background-color:blue;
+}
+.drone{
+    height:50px;
+    width:50px;
+    transform: rotate(0deg);
+    position: relative;
+}
+.table{
+    overflow:hidden;
+    box-shadow: 10px 10px 5px grey;
+    position: relative;
+    top: 150px;
+    margin: auto;
+    height:500px;
+    width:500px;
+    vertical-align: middle;
+    background-color:white;
+}
